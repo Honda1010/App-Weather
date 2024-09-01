@@ -43,14 +43,13 @@
             <span class="text-3xl font-semibold text-white">WeatherApp</span>
         </div>
         <!-- Search Bar -->
-        <form class="relative">
-            <input type="text" placeholder="Search City..."
-                class="bg-slate-900 rounded-full text-white outline-none pl-5 w-full h-10 hidden md:block md:w-96 md:h-12 md:text-lg">
-        </form>
+        <div class="relative w-full md:w-96">
+            <input type="text" placeholder="Search City..." class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg">
+            <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+        </div>
         <!-- Icons -->
         <div class="flex justify-end space-x-3">
-            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full md:hidden"> <i
-                    class="fa-solid fa-magnifying-glass"></i> </button>
+            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full md:hidden"> <i class="fa-solid fa-magnifying-glass"></i> </button>
             <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full">&#176C</button>
             <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full">&#176F</button>
         </div>
@@ -212,9 +211,8 @@
             </div>
         </section>
     </main>
-    <footer class=" bg-slate-900 text-white h-10 grid place-items-center mt-10 rounded-md">
-        <p>&copy; 2024 NTI Web Design Final Project. All rights reserved.</p>
-    </footer>
+    <footer class=" text-white h-10 grid place-items-center mt-10 rounded-md">&copy; 2024 NTI Web Design Final Project. All rights reserved.</footer>
+    <script src="app.js"></script>
 </body>
 
 </html>
