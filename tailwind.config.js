@@ -6,20 +6,25 @@ module.exports = {
       container: {
         center: true,
       },
-      // Custom Colors
-      // colors: {
-      //   ChildBgColor: '#1C1C1E',
-      //   BodyBgColor: '#111013',
-      //   BlueColor: '#111013',
-      //   PurpleColor: '#B5A1E0',
-      //   MustardColor: '#B5A1E0',
-      //   GrayishColor: '#80888B',
-      // },
+      colors: {
+        ChildBgColor: '#1C1C1E',
+        BodyBgColor: '#111013',
+        BlueColor: '#111013',
+        PurpleColor: '#B5A1E0',
+        MustardColor: '#B5A1E0',
+        GrayishColor: '#80888B',
+        Surface: '#1D1C1F',
+        BlackAlpha: 'hsla(0, 0%, 0%, 0.1);',
+
+
+
+      },
       borderRadius: {
         'main-BR': '50px',      
       },
       boxShadow: {
         'main-BS': 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;',
+        'Sec-BS': '10px 10px 34px -6px rgba(201,201,201,0.67);',
       },
       fontFamily: {
         Jost: ['Jost', 'sans-serif'],
