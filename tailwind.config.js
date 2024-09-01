@@ -3,14 +3,18 @@ module.exports = {
   content: ["./*.{html,js}"],
   theme: {
     extend: {
-      colors: {
-        ChildBgColor: '#1C1C1E',
-        BodyBgColor: '#111013',
-        BlueColor: '#111013',
-        PurpleColor: '#B5A1E0',
-        MustardColor: '#B5A1E0',
-        GrayishColor: '#80888B',
+      container: {
+        center: true,
       },
+      // Custom Colors
+      // colors: {
+      //   ChildBgColor: '#1C1C1E',
+      //   BodyBgColor: '#111013',
+      //   BlueColor: '#111013',
+      //   PurpleColor: '#B5A1E0',
+      //   MustardColor: '#B5A1E0',
+      //   GrayishColor: '#80888B',
+      // },
       borderRadius: {
         'main-BR': '50px',      
       },
@@ -19,6 +23,19 @@ module.exports = {
       },
       fontFamily: {
         Jost: ['Jost', 'sans-serif'],
+      },
+      // Adding Transition Properties
+      transitionProperty: {
+        'width': 'width',
+        'spacing': 'margin, padding',
+      },
+      transitionDuration: {
+        '400': '400ms',
+        '600': '600ms',
+      },
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
       },
     },
   },

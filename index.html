@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A responsive weather application that displays real-time weather updates using HTML, CSS, and JavaScript. Enter a city to view current temperature, humidity, and conditions." />
+    <meta name="description"
+        content="A responsive weather application that displays real-time weather updates using HTML, CSS, and JavaScript. Enter a city to view current temperature, humidity, and conditions." />
     <meta name="author" content="Usama Mohammed, Mohaned Mohammed, Mohammed Amer">
     <meta property="og:title" content="WeatherApp">
-    <meta property="og:description" content="A responsive weather application that displays real-time weather updates using HTML, CSS, and JavaScript. Enter a city to view current temperature, humidity, and conditions.">
+    <meta property="og:description"
+        content="A responsive weather application that displays real-time weather updates using HTML, CSS, and JavaScript. Enter a city to view current temperature, humidity, and conditions.">
     <meta property="og:image" content="">
     <meta property="og:url" content="">
     <meta property="og:type" content="website">
@@ -27,12 +30,78 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <title>WeatherApp</title>
 </head>
-<body class="font-Jost bg-BodyBgColor">
-    <header class="text-white"> Header </header>
-    <main></main>
-    <footer></footer>
+
+<body class="container font-Jost bg-black ">
+    <header class="flex justify-between items-center p-4">
+        <!-- Logo -->
+        <div>
+            <i class="fa-solid fa-cloud text-3xl text-white"></i>
+            <span class="text-3xl font-semibold text-white">WeatherApp</span>
+        </div>
+        <!-- Search Bar -->
+        <form class="relative">
+            <input type="text" placeholder="Search City..." class="bg-slate-900 rounded-full text-white outline-none pl-5 w-full h-10 hidden md:block md:w-96 md:h-12 md:text-lg">
+        </form>
+        <!-- Icons -->
+        <div class="flex justify-end space-x-3">
+            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full md:hidden"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full">&#176C</button>
+            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full">&#176F</button>
+        </div>
+    </header>
+    <main class="text-center mt-12 text-white">
+        <!-- Location & Main Info Section -->
+        <section class="my-8">
+            <h1 class=" text-3xl">Cairo, Egypt</h1>
+            <p class="mb-8 text-sm">Sunday, September 1, 2024 at 2:37 AM</p>
+            <p class="bg-slate-900 rounded-full inline-block py-2 px-6 ">Clear</p>
+            <div class="text-5xl my-4">
+                <i class="fa-solid fa-cloud-bolt"></i>
+            </div>
+            <p class="text-3xl">83&#176</p>
+            <div class="flex justify-center items-center text-lg">
+                <p class="m-2 ">Min: 82&#176</p>
+                <p class="m-2 ">Max: 83&#176</p>
+            </div>    
+        </section>
+        <!-- Weather Info -->
+        <section class="grid grid-cols-4 gap-2">
+            <div class="flex bg-slate-900 p-4 rounded-md">
+                <i class="fa-solid fa-temperature-full mr-4 text-2xl"></i>
+                <div class="text-left">
+                    <p class="mb-1">Real Feel</p>
+                    <p>87&#176</p>
+                </div>
+            </div>
+            <div class="flex bg-slate-900 p-4 rounded-md">
+                <i class="fa-solid fa-droplet mr-4 text-2xl"></i>
+                <div class="text-left">
+                    <p class="mb-1">Humidity</p>
+                    <p><p>65&#37;</p>
+                </div>
+            </div>
+            <div class="flex bg-slate-900 p-4 rounded-md">
+                <i class="fa-solid fa-wind mr-4 text-2xl"></i>
+                <div class="text-left">
+                    <p class="mb-1">Wind</p>
+                    <p>5.75mph</p>
+                </div>
+            </div>
+            <div class="flex bg-slate-900 p-4 rounded-md">
+                <i class="fa-solid fa-gauge-high mr-4 text-2xl"></i>
+                <div class="text-left">
+                    <p class="mb-1">Pressure</p>
+                    <p>1011hpa</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-slate-900 text-white h-10 grid place-items-center mt-10 rounded-md">
+        <p>&copy; 2024 NTI Web Design Final Project. All rights reserved.</p>
+    </footer>
 </body>
 </html>
