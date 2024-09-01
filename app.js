@@ -1,3 +1,4 @@
+const API_KEY = 'e947735dd4e1e17772f077feb05d633e';
 const weatherIcons = [
     { code: 200, icon: '<i class="fa-solid fa-bolt"></i>' }, // Thunderstorm with light rain
     { code: 201, icon: '<i class="fa-solid fa-bolt"></i>' }, // Thunderstorm with rain
@@ -29,12 +30,50 @@ const weatherIcons = [
     { code: 804, icon: '<i class="fa-solid fa-cloud"></i>' } // Overcast clouds
 ];
 
-let currCity = 'London';
+let currCity = 'Cairo';
 let units = 'metric'
 
 // Selectors
-let city = document.getElementById("");
-let dateTime = document.getElementById("");
+let city = document.getElementById("city");
+let dateTime = document.getElementById("dateTime");
+let weatherForcast = document.getElementById("weather_forcast");
+let weatherIcon = document.getElementById("weather_icon");
+let weatherFeelsLikeTemperature = document.getElementById("weather_feels_like_temperature");
+let weatherMinTemperature = document.getElementById("weather_min_temperature");
+let weatherMaxTemperature = document.getElementById("weather_max_temperature");
+
+let forecastContainer = document.getElementById("forecast_container");
+
+let sunrise = document.getElementById("sunrise");
+let sunset = document.getElementById("sunset");
+
+let humidity = document.getElementById("humidity");
+let pressure = document.getElementById("pressure")
+let visibility = document.getElementById("visibility");
+let weatherTemperature = document.getElementById("Weather_temperature");
+
+let PM25 = document.getElementById("PM25");
+let SO2 = document.getElementById("SO2");
+let NO2 = document.getElementById("NO2");
+let O3 = document.getElementById("O3");
+let airQuality = document.getElementById("air_quality");
+
+document.getElementById("search_form").addEventListener('submit', e=> {
+    let search = document.getElementById("search_bar");
+    e.preventDefault();
+    currCity = search.value;
+    getWeather();
+})
+
+function ChangeC() {
+    units = 'metric';
+    getWeather();
+}
+
+function ChangeF() {
+    units = 'imperial';
+    getWeather();
+}
 
 // Convert country code to name
 function ConvertCountryCode(country){
@@ -57,14 +96,90 @@ function ConvertTimeStamp(timestamp, timezone){
     }
     return date.toLocaleString("en-US", options);
 }
-function getWeather(){
-    const API_KEY = 'e947735dd4e1e17772f077feb05d633e';
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currCity}&appid=${API_KEY}&units=${units}`)
-    .then(res => res.json())
-    .then(data => {
-        city.innerHTML = `${data.name}, ${ConvertCountryCode(data.sys.country)}`;
-        dateTime.innerHTML = ConvertTimeStamp(data.dt, data.timezone);
-        
-    })
+function formatTime(timestamp) {
+    const date = new Date(timestamp * 1000); // Convert Unix timestamp to milliseconds
+    const options = {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true // Set to false for 24-hour format
+    };
+    return date.toLocaleTimeString('en-US', options);
 }
+function getWeather() {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currCity}&appid=${API_KEY}&units=${units}`)
+        .then(response => response.json())
+        .then(data => {
+            // Handle current weather data
+            city.innerHTML = `${data.city.name}, ${ConvertCountryCode(data.city.country)}`;
+            dateTime.innerHTML = ConvertTimeStamp(data.list[0].dt, data.city.timezone);
+            weatherForcast.innerHTML = `${data.list[0].weather[0].main}`;
+            
+            // Get Weather Icon
+            const weatherCode = data.list[0].weather[0].id;
+            const weatherIconObj = weatherIcons.find(icon => icon.code === weatherCode);
+            weatherIcon.innerHTML = `${weatherIconObj.icon}`;
+
+            weatherFeelsLikeTemperature.innerHTML = `${data.list[0].main.feels_like}&#176`;
+            weatherMinTemperature.innerHTML = `Min: ${data.list[0].main.temp_min}&#176`;
+            weatherMaxTemperature.innerHTML = `Max: ${data.list[0].main.temp_max}&#176`;
+
+            sunrise.innerHTML = formatTime(data.city.sunrise);
+            sunset.innerHTML = formatTime(data.city.sunset);
+
+            humidity.innerHTML = `${data.list[0].main.humidity}&#37;`;
+            pressure.innerHTML = `${data.list[0].main.pressure}hPa`;
+            visibility.innerHTML = `${(data.list[0].visibility / 1000)}KM`;
+            weatherTemperature.innerHTML = `${data.list[0].main.temp}&#176`;
+
+            // Filter out data for each day
+            const forecastDays = data.list.filter(entry => entry.dt_txt.endsWith('12:00:00'));
+            forecastContainer.innerHTML = '<h1 class="text-3xl">5 Days Forecast</h1>';
+            forecastDays.forEach(forecast => {
+                const weatherCode = forecast.weather[0].id;
+                const weatherIconObj = weatherIcons.find(icon => icon.code === weatherCode);
+
+                forecastContainer.innerHTML += `
+                    <div class="flex justify-around">
+                        <div class="w-1/3">
+                            ${weatherIconObj.icon}
+                            <p class="inline-block">${Math.round(forecast.main.temp)}&#176;</p>
+                        </div>
+                        <p class="w-1/3">${ConvertTimeStamp(forecast.dt, data.city.timezone).split(',')[1]}</p>
+                        <p class="w-1/3">${new Date(forecast.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' })}</p>
+                    </div>
+                `;
+            });
+            getAirQuality(data.city.coord.lat, data.city.coord.lon);
+        })
+        .catch(error => console.error('Error fetching weather data:', error));
+}
+function getAirQualityDescription(aqi) {
+    switch (aqi) {
+        case 1:
+            return 'Good';
+        case 2:
+            return 'Fair';
+        case 3:
+            return 'Moderate';
+        case 4:
+            return 'Poor';
+        case 5:
+            return 'Very Poor';
+        default:
+            return 'Unknown';
+    }
+}
+function getAirQuality(lat, lon) {
+    fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+            PM25.innerHTML = data.list[0].components.pm2_5;
+            SO2.innerHTML = data.list[0].components.so2;
+            NO2.innerHTML = data.list[0].components.no2;
+            O3.innerHTML = data.list[0].components.o3;
+            airQuality.innerHTML = getAirQualityDescription(data.list[0].main.aqi);
+        })
+        .catch(error => console.error('Error fetching air quality data:', error));
+}
+
 document.body.addEventListener('load', getWeather());

@@ -43,134 +43,89 @@
             <span class="text-3xl font-semibold text-white">WeatherApp</span>
         </div>
         <!-- Search Bar -->
-        <div class="relative w-full md:w-96">
-            <input type="text" placeholder="Search City..." class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg">
+        <form class="relative w-full md:w-96" id="search_form">
+            <input type="text" placeholder="Search City..." class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg" id="search_bar">
             <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-        </div>
+        </form>
         <!-- Icons -->
         <div class="flex justify-end space-x-3">
             <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full md:hidden"> <i class="fa-solid fa-magnifying-glass"></i> </button>
-            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full">&#176C</button>
-            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full">&#176F</button>
+            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full" onclick="ChangeC()">&#176C</button>
+            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full" onclick="ChangeF()">&#176F</button>
         </div>
     </header>
     <main class=" mt-12 text-white mx-4">
         <!-- Location & Main Info Section -->
         <section class="my-8 text-center grid grid-cols-1 gap-y-14 md:grid-cols-2 md:gap-x-14">
             <div class="rounded-xl bg-slate-950 py-6 transition-shadow duration-300 hover:shadow-Sec-BS">
-                <h1 class=" text-3xl">Cairo, Egypt</h1>
-                <p class="mb-8 text-sm">Sunday, September 1, 2024 at 2:37 AM</p>
-                <p class="bg-slate-900 rounded-full inline-block py-2 px-6 ">Clear</p>
-                <div class="text-5xl my-4">
-                    <i class="fa-solid fa-cloud-bolt"></i>
-                </div>
-                <p class="text-3xl">83&#176</p>
+                <!-- City -->
+                <h1 class=" text-3xl" id="city"></h1>
+                <!-- DateTime -->
+                <p class="mb-8 text-sm" id="dateTime"></p>
+                <!-- Weather Forcast -->
+                <p class="bg-slate-900 rounded-full inline-block py-2 px-6" id="weather_forcast"></p>
+                <!-- Weather Icon -->
+                <div class="text-5xl my-4" id="weather_icon"></div>
+                <!-- Current Feels_like Temperature -->
+                <p class="text-3xl" id="weather_feels_like_temperature"></p>
+                <!-- Min & Max Temperature -->
                 <div class="flex justify-center items-center text-lg">
-                    <p class="m-2 ">Min: 82&#176</p>
-                    <p class="m-2 ">Max: 83&#176</p>
+                    <p class="m-2" id="weather_min_temperature"></p>
+                    <p class="m-2" id="weather_max_temperature"></p>
                 </div>
             </div>
-            <div
-                class="rounded-xl bg-slate-950 py-6 flex flex-col justify-around transition-shadow duration-300 hover:shadow-Sec-BS">
-                <h1 class=" text-3xl">6 Days Forecast</h1>
-                <div class="flex justify-around">
-                    <div>
-                        <i class="fa-solid fa-cloud-sun mr-1"></i>
-                        <p class="inline-block">18&#176;</p>
-                    </div>
-                    <p>2 September</p>
-                    <p>Monday</p>
-                </div>
-                <div class="flex justify-around">
-                    <div>
-                        <i class="fa-solid fa-cloud-sun mr-1"></i>
-                        <p class="inline-block">18&#176;</p>
-                    </div>
-                    <p>2 September</p>
-                    <p>Monday</p>
-                </div>
-                <div class="flex justify-around">
-                    <div>
-                        <i class="fa-solid fa-cloud-sun mr-1"></i>
-                        <p class="inline-block">18&#176;</p>
-                    </div>
-                    <p>2 September</p>
-                    <p>Monday</p>
-                </div>
-                <div class="flex justify-around">
-                    <div>
-                        <i class="fa-solid fa-cloud-sun mr-1"></i>
-                        <p class="inline-block">18&#176;</p>
-                    </div>
-                    <p>2 September</p>
-                    <p>Monday</p>
-                </div>
-                <div class="flex justify-around">
-                    <div>
-                        <i class="fa-solid fa-cloud-sun mr-1"></i>
-                        <p class="inline-block">18&#176;</p>
-                    </div>
-                    <p>2 September</p>
-                    <p>Monday</p>
-                </div>
-                <div class="flex justify-around">
-                    <div>
-                        <i class="fa-solid fa-cloud-sun mr-1"></i>
-                        <p class="inline-block">18&#176;</p>
-                    </div>
-                    <p>2 September</p>
-                    <p>Monday</p>
-                </div>
-            </div>
-
+            <!-- 5 Days Forecast -->
+            <div class="rounded-xl bg-slate-950 py-6 flex flex-col justify-around transition-shadow duration-300 hover:shadow-Sec-BS" id="forecast_container"> </div>
         </section>
+
         <!-- Weather Info -->
         <section class="bg-slate-950 rounded-md p-4 rounded-xl">
             <h2 class="my-2">Todays Highlights</h2>
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                <div
-                    class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
+                <!-- Air Quality Index  -->
+                <div class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
                     <div class="flex justify-between text-sm my-2">
                         <p class="text-neutral-500">Air Quality Index</p>
-                        <p class="bg-orange-300 rounded-full px-2 text-black">Moderate</p>
+                        <p class="bg-orange-300 rounded-full px-2 text-black" id="air_quality"></p>
                     </div>
                     <div class="flex items-center justify-between my-4">
                         <i class="fa-solid fa-wind mr-4 text-2xl"></i>
                         <div class="text-center">
                             <p class="text-neutral-500 text-xs">PM25</p>
-                            <p class="text-2xl">15.3</p>
+                            <p class="text-2xl" id="PM25"></p>
                         </div>
                         <div class="text-center">
                             <p class="text-neutral-500 text-sm">SO<span class="text-xs">2</span></p>
-                            <p class="text-2xl">3.76</p>
+                            <p class="text-2xl" id="SO2"></p>
                         </div>
                         <div class="text-center">
                             <p class="text-neutral-500 text-sm">NO<span class="text-xs">2</span></p>
-                            <p class="text-2xl">8.14</p>
+                            <p class="text-2xl" id="NO2"></p>
                         </div>
                         <div class="text-center">
-                            <p class="text-neutral-500 text-sm">O<span class="text-xs">2</span></p>
-                            <p class="text-2xl">106</p>
+                            <p class="text-neutral-500 text-sm">O<span class="text-xs">3</span></p>
+                            <p class="text-2xl" id="O3"></p>
                         </div>
-
                     </div>
                 </div>
-                <div
-                    class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
+                <!-- Sunrise & Sunset -->
+                <div class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
                     <p class="text-neutral-500 text-sm my-2">Sunrise & Sunset</p>
                     <div class="grid grid-cols-2">
+                        <!-- Sunrise -->
                         <div class="flex items-center">
                             <i class="fa-regular fa-sun text-3xl mr-6"></i>
                             <div>
                                 <p class="text-neutral-500 text-xs">Sunrise</p>
-                                <p class="text-3xl">6:41 AM</p>
+                                <p class="text-3xl" id="sunrise"></p>
                             </div>
                         </div>
+                        <!-- Sunset -->
                         <div class="flex items-center">
                             <i class="fa-regular fa-moon text-3xl mx-6"></i>
                             <div>
                                 <p class="text-neutral-500 text-xs">Sunset</p>
-                                <p class="text-3xl">6:00 PM</p>
+                                <p class="text-3xl" id="sunset"></p>
                             </div>
                         </div>
                     </div>
@@ -181,14 +136,14 @@
                         <p class="text-neutral-500 text-sm my-2">Humidity</p>
                         <div class="flex text-3xl items-center ">
                             <i class="fa-solid fa-droplet mr-6"></i>
-                            <p>54&#37;</p>
+                            <p id="humidity"></p>
                         </div>
                     </div>
                     <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
                         <p class="text-neutral-500 text-sm my-2">Pressure</p>
                         <div class="flex text-3xl items-center ">
                             <i class="fa-solid fa-gauge-high mr-2 md:mr-6"></i>
-                            <p>1011hPa</p>
+                            <p id="pressure"></p>
                         </div>
                     </div>
                 </div>
@@ -197,14 +152,14 @@
                         <p class="text-neutral-500 text-sm my-2">Visibility</p>
                         <div class="flex text-3xl items-center ">
                             <i class="fa-regular fa-eye mr-6"></i>
-                            <p>10km</p>
+                            <p id="visibility"></p>
                         </div>
                     </div>
                     <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
                         <p class="text-neutral-500 text-sm my-2">Temperature</p>
                         <div class="flex text-3xl items-center ">
                             <i class="fa-solid fa-temperature-full mr-6"></i>
-                            <p>13&#176;</p>
+                            <p id="Weather_temperature"></p>
                         </div>
                     </div>
                 </div>
