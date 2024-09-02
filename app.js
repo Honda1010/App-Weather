@@ -171,15 +171,23 @@ function getAirQualityDescription(aqi) {
 }
 function getAirQuality(lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
-        .then(response => response.json())
-        .then(data => {
-            PM25.innerHTML = data.list[0].components.pm2_5;
-            SO2.innerHTML = data.list[0].components.so2;
-            NO2.innerHTML = data.list[0].components.no2;
-            O3.innerHTML = data.list[0].components.o3;
-            airQuality.innerHTML = getAirQualityDescription(data.list[0].main.aqi);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
         })
-        .catch(error => console.error('Error fetching air quality data:', error));
+        .then(data => {
+            PM25.innerHTML = `${data.list[0].components.pm2_5}`;
+            SO2.innerHTML = `${data.list[0].components.so2}`;
+            NO2.innerHTML = `${data.list[0].components.no2}`;
+            O3.innerHTML = `${data.list[0].components.o3}`;
+            airQuality.innerHTML = `Air Quality: ${getAirQualityDescription(data.list[0].main.aqi)}`;
+        })
+        .catch(error => {
+            console.error('Error fetching air quality data:', error);
+            airQuality.innerHTML = 'Unable to fetch air quality data.';
+        });
 }
 
 document.body.addEventListener('load', getWeather());
