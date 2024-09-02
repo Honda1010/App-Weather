@@ -182,11 +182,10 @@ function getAirQuality(lat, lon) {
             SO2.innerHTML = `${data.list[0].components.so2}`;
             NO2.innerHTML = `${data.list[0].components.no2}`;
             O3.innerHTML = `${data.list[0].components.o3}`;
-            airQuality.innerHTML = `Air Quality: ${getAirQualityDescription(data.list[0].main.aqi)}`;
+            airQuality.innerHTML = `${getAirQualityDescription(data.list[0].main.aqi)}`;
         })
         .catch(error => {
             console.error('Error fetching air quality data:', error);
-            airQuality.innerHTML = 'Unable to fetch air quality data.';
         });
 }
 
