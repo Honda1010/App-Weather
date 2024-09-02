@@ -170,7 +170,7 @@ function getAirQualityDescription(aqi) {
     }
 }
 function getAirQuality(lat, lon) {
-    fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
             PM25.innerHTML = data.list[0].components.pm2_5;
