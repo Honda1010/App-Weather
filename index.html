@@ -58,11 +58,10 @@
                 class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:hidden ">
                 <i class="fa-solid fa-magnifying-glass"></i></button>
             <button
-                class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block focus:outline-none focus:ring focus:ring-yellow-50"
-                onclick="ChangeC()">&#176C</button>
-            <button
-                class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block focus:outline-none focus:ring focus:ring-yellow-50"
-                onclick="ChangeF()">&#176F</button>
+                class="text-white h-12 bg-violet-500 place-items-center rounded-full flex p-4 group focus:outline-none focus:ring focus:ring-yellow-50">
+                <i class="fa-solid fa-location-crosshairs md:mr-1 group-hover:mr-1"></i>
+                <p class="hidden md:block text-sm transition-all duration-1000 group-hover:block ">Get Location</p>
+            </button>
         </div>
         <!-- search after you click on button -->
         <div class="flex justify-around items-center w-full hidden">
@@ -86,7 +85,16 @@
                 <!-- City -->
                 <h1 class=" text-3xl" id="city"></h1>
                 <!-- DateTime -->
-                <p class="mb-8 text-sm" id="dateTime"></p>
+                <p class="mb-6 text-sm" id="dateTime"></p>
+                <!-- C & F Buttons -->
+                <div class="flex justify-center space-x-3 mb-6 ">
+                    <button
+                        class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block focus:outline-none focus:ring focus:ring-yellow-50 "
+                        onclick="ChangeC()">&#176C</button>
+                    <button
+                        class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block focus:outline-none focus:ring focus:ring-yellow-50"
+                        onclick="ChangeF()">&#176F</button>
+                </div>
                 <!-- Weather Forcast -->
                 <p class="bg-slate-900 rounded-full inline-block py-2 px-6" id="weather_forcast"></p>
                 <!-- Weather Icon -->
@@ -142,18 +150,18 @@
                     <div class="grid grid-cols-2">
                         <!-- Sunrise -->
                         <div class="flex items-center">
-                            <i class="fa-regular fa-sun text-3xl mr-6"></i>
+                            <i class="fa-regular fa-sun text-2xl mr-6"></i>
                             <div>
                                 <p class="text-neutral-500 text-sm">Sunrise</p>
-                                <p class="text-3xl" id="sunrise"></p>
+                                <p class="text-2xl" id="sunrise"></p>
                             </div>
                         </div>
                         <!-- Sunset -->
                         <div class="flex items-center">
-                            <i class="fa-regular fa-moon text-3xl mx-6"></i>
+                            <i class="fa-regular fa-moon text-2xl mx-6"></i>
                             <div>
                                 <p class="text-neutral-500 text-sm">Sunset</p>
-                                <p class="text-3xl" id="sunset"></p>
+                                <p class="text-2xl" id="sunset"></p>
                             </div>
                         </div>
                     </div>
