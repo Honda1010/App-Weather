@@ -38,24 +38,24 @@
 <body class="container font-Jost bg-black ">
     <header class="flex justify-between items-center p-4">
         <!-- Logo -->
-        <div class="flex">
+        <div class="flex" id="logo">
             <i class="fa-solid fa-cloud text-3xl text-white"></i>
             <span class="text-3xl font-semibold text-white ml-1">WeatherApp</span>
         </div>
         <!-- Search Bar -->
-        <form class="relative w-full md:w-96 hidden md:block " id="search_form">
+        <form class="relative w-full md:w-96 hidden md:block " id="search_form_desktop"
             <div class="hidden md:block">
                 <input type="text" placeholder="Search City..."
                     class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg"
-                    id="search_bar">
+                    id="search_bar_desktop">
                 <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
             </div>
         </form>
 
         <!-- Icons -->
-        <div class="flex justify-end space-x-3 ">
+        <div class="flex justify-end space-x-3" id="icons">
             <button
-                class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:hidden ">
+                class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:hidden " onclick="SmSearchPopUp()">
                 <i class="fa-solid fa-magnifying-glass"></i></button>
             <button
                 class="text-white h-12 bg-violet-500 place-items-center rounded-full flex p-4 group focus:outline-none focus:ring focus:ring-yellow-50">
@@ -64,15 +64,16 @@
             </button>
         </div>
         <!-- search after you click on button -->
-        <div class="flex justify-around items-center w-full hidden">
+        <div class="flex justify-around items-center w-full hidden" id="sm_search_container">
             <button
-                class="text-white h-10 w-10 bg-slate-900 grid place-items-center rounded-full p-3  mr-2 md:hidden transition-shadow duration-300 hover:shadow-Sec-BS">
+                class="text-white h-10 w-10 bg-slate-900 grid place-items-center rounded-full p-3  mr-2 md:hidden transition-shadow duration-300 hover:shadow-Sec-BS" onclick="SmSearchPopDown()">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
-            <form class="relative w-3/4">
+            <form class="relative w-full" id="search_form_mobile">
                 <div>
                     <input type="text" placeholder="Search City..."
-                        class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 ">
+                        class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg"
+                        id="search_bar_mobile">
                     <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
                 </div>
             </form>
@@ -89,10 +90,10 @@
                 <!-- C & F Buttons -->
                 <div class="flex justify-center space-x-3 mb-6 ">
                     <button
-                        class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block focus:outline-none focus:ring focus:ring-yellow-50 "
+                        class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block ring-yellow-50" id="c_button"
                         onclick="ChangeC()">&#176C</button>
                     <button
-                        class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block focus:outline-none focus:ring focus:ring-yellow-50"
+                        class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block ring-yellow-50" id="f_button"
                         onclick="ChangeF()">&#176F</button>
                 </div>
                 <!-- Weather Forcast -->

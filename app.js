@@ -58,19 +58,55 @@ let NO2 = document.getElementById("NO2");
 let O3 = document.getElementById("O3");
 let airQuality = document.getElementById("air_quality");
 
-document.getElementById("search_form").addEventListener('submit', e=> {
-    let search = document.getElementById("search_bar");
+let SmSearchContainer = document.getElementById("sm_search_container");
+let Icons = document.getElementById("icons");
+let Logo = document.getElementById("logo");
+
+document.getElementById("search_form_desktop").addEventListener('submit', e=> {
+    let search = document.getElementById("search_bar_desktop");
     e.preventDefault();
     currCity = search.value;
     getWeather();
-})
+});
+document.getElementById("search_form_mobile").addEventListener('submit', e=> {
+    let search = document.getElementById("search_bar_mobile");
+    e.preventDefault();
+    currCity = search.value;
+    getWeather();
+});
+
+function SmSearchPopUp(){
+    // Resetting All
+    SmSearchContainer.classList.remove("hidden");
+    Icons.classList.remove("hidden");
+    Logo.classList.remove("hidden");
+    // Setting Icon and Logo to hidden
+    Icons.classList.add("hidden");
+    Logo.classList.add("hidden");
+}
+function SmSearchPopDown(){
+    // Resetting All
+    SmSearchContainer.classList.remove("hidden");
+    Icons.classList.remove("hidden");
+    Logo.classList.remove("hidden");
+
+    // Setting Icon and Logo to hidden
+    SmSearchContainer.classList.add("hidden");
+}
+
+let CButton = document.getElementById("c_button");
+let FButton = document.getElementById("f_button");
 
 function ChangeC() {
+    FButton.classList.remove("ring");
+    CButton.classList.add("ring");
     units = 'metric';
     getWeather();
 }
 
 function ChangeF() {
+    FButton.classList.add("ring");
+    CButton.classList.remove("ring");
     units = 'imperial';
     getWeather();
 }
@@ -190,3 +226,4 @@ function getAirQuality(lat, lon) {
 }
 
 document.body.addEventListener('load', getWeather());
+
