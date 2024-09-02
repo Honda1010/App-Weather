@@ -38,20 +38,45 @@
 <body class="container font-Jost bg-black ">
     <header class="flex justify-between items-center p-4">
         <!-- Logo -->
-        <div>
+        <div class="flex">
             <i class="fa-solid fa-cloud text-3xl text-white"></i>
-            <span class="text-3xl font-semibold text-white">WeatherApp</span>
+            <span class="text-3xl font-semibold text-white ml-1">WeatherApp</span>
         </div>
         <!-- Search Bar -->
-        <form class="relative w-full md:w-96 hidden md:block" id="search_form">
-            <input type="text" placeholder="Search City..." class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg" id="search_bar">
-            <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+        <form class="relative w-full md:w-96 hidden md:block " id="search_form">
+            <div class="hidden md:block">
+                <input type="text" placeholder="Search City..."
+                    class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg"
+                    id="search_bar">
+                <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+            </div>
         </form>
+
         <!-- Icons -->
-        <div class="flex justify-end space-x-3">
-            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full md:hidden"> <i class="fa-solid fa-magnifying-glass"></i> </button>
-            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full" onclick="ChangeC()">&#176C</button>
-            <button class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full" onclick="ChangeF()">&#176F</button>
+        <div class="flex justify-end space-x-3 ">
+            <button
+                class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:hidden ">
+                <i class="fa-solid fa-magnifying-glass"></i></button>
+            <button
+                class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block focus:outline-none focus:ring focus:ring-yellow-50"
+                onclick="ChangeC()">&#176C</button>
+            <button
+                class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block focus:outline-none focus:ring focus:ring-yellow-50"
+                onclick="ChangeF()">&#176F</button>
+        </div>
+        <!-- search after you click on button -->
+        <div class="flex justify-around items-center w-full hidden">
+            <button
+                class="text-white h-10 w-10 bg-slate-900 grid place-items-center rounded-full p-3  mr-2 md:hidden transition-shadow duration-300 hover:shadow-Sec-BS">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <form class="relative w-3/4">
+                <div>
+                    <input type="text" placeholder="Search City..."
+                        class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 ">
+                    <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                </div>
+            </form>
         </div>
     </header>
     <main class=" mt-12 text-white mx-4">
@@ -75,15 +100,17 @@
                 </div>
             </div>
             <!-- 5 Days Forecast -->
-            <div class="rounded-xl bg-slate-950 py-6 flex flex-col justify-around transition-shadow duration-300 hover:shadow-Sec-BS" id="forecast_container"> </div>
+            <div class="rounded-xl bg-slate-950 py-6 flex flex-col justify-around transition-shadow duration-300 hover:shadow-Sec-BS"
+                id="forecast_container"> </div>
         </section>
 
         <!-- Weather Info -->
-        <section class="bg-slate-950 rounded-md p-4 rounded-xl">
+        <section class="bg-slate-950  p-4 rounded-xl">
             <h2 class="my-2">Todays Highlights</h2>
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <!-- Air Quality Index  -->
-                <div class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
+                <div
+                    class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
                     <div class="flex justify-between text-sm my-2">
                         <p class="text-neutral-500">Air Quality Index</p>
                         <p class="bg-orange-300 rounded-full px-2 text-black" id="air_quality"></p>
@@ -109,14 +136,15 @@
                     </div>
                 </div>
                 <!-- Sunrise & Sunset -->
-                <div class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                    <p class="text-neutral-500 text-sm my-2">Sunrise & Sunset</p>
+                <div
+                    class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
+                    <p class="text-neutral-500 text-sm mt-2 mb-2 md:mb-6">Sunrise & Sunset</p>
                     <div class="grid grid-cols-2">
                         <!-- Sunrise -->
                         <div class="flex items-center">
                             <i class="fa-regular fa-sun text-3xl mr-6"></i>
                             <div>
-                                <p class="text-neutral-500 text-xs">Sunrise</p>
+                                <p class="text-neutral-500 text-sm">Sunrise</p>
                                 <p class="text-3xl" id="sunrise"></p>
                             </div>
                         </div>
@@ -124,7 +152,7 @@
                         <div class="flex items-center">
                             <i class="fa-regular fa-moon text-3xl mx-6"></i>
                             <div>
-                                <p class="text-neutral-500 text-xs">Sunset</p>
+                                <p class="text-neutral-500 text-sm">Sunset</p>
                                 <p class="text-3xl" id="sunset"></p>
                             </div>
                         </div>
@@ -133,15 +161,15 @@
                 </div>
                 <div class="grid grid-cols-2 gap-x-4">
                     <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                        <p class="text-neutral-500 text-sm my-2">Humidity</p>
-                        <div class="flex text-3xl items-center ">
-                            <i class="fa-solid fa-droplet mr-6"></i>
+                        <p class="text-neutral-500 text-sm  mb-3">Humidity</p>
+                        <div class="flex text-2xl items-center ">
+                            <i class="fa-solid fa-droplet mr-6 mb-1"></i>
                             <p id="humidity"></p>
                         </div>
                     </div>
                     <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                        <p class="text-neutral-500 text-sm my-2">Pressure</p>
-                        <div class="flex text-3xl items-center ">
+                        <p class="text-neutral-500 text-sm mb-3">Pressure</p>
+                        <div class="flex text-2xl items-center ">
                             <i class="fa-solid fa-gauge-high mr-2 md:mr-6"></i>
                             <p id="pressure"></p>
                         </div>
@@ -149,15 +177,15 @@
                 </div>
                 <div class="grid grid-cols-2 gap-x-4">
                     <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                        <p class="text-neutral-500 text-sm my-2">Visibility</p>
-                        <div class="flex text-3xl items-center ">
+                        <p class="text-neutral-500 text-sm mb-3">Visibility</p>
+                        <div class="flex text-2xl items-center ">
                             <i class="fa-regular fa-eye mr-6"></i>
                             <p id="visibility"></p>
                         </div>
                     </div>
                     <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                        <p class="text-neutral-500 text-sm my-2">Temperature</p>
-                        <div class="flex text-3xl items-center ">
+                        <p class="text-neutral-500 text-sm mb-3">Temperature</p>
+                        <div class="flex text-2xl items-center ">
                             <i class="fa-solid fa-temperature-full mr-6"></i>
                             <p id="Weather_temperature"></p>
                         </div>
@@ -166,7 +194,11 @@
             </div>
         </section>
     </main>
-    <footer class=" text-white h-10 grid place-items-center mt-10 rounded-md">&copy; 2024 NTI Web Design Final Project. All rights reserved.</footer>
+    <footer class=" text-white h-10 grid place-items-center mt-10 rounded-md mx-4 text-sm md:text-base">&copy; 2024 NTI
+        Web Design
+        Final
+        Project.
+        All rights reserved.</footer>
     <script src="app.js"></script>
 </body>
 
