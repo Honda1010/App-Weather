@@ -66,14 +66,36 @@ document.getElementById("search_form_desktop").addEventListener('submit', e=> {
     let search = document.getElementById("search_bar_desktop");
     e.preventDefault();
     currCity = search.value;
-    getWeather();
+    getWeather(`https://api.openweathermap.org/data/2.5/forecast?q=${currCity}&appid=${API_KEY}&units=${units}`);
 });
 document.getElementById("search_form_mobile").addEventListener('submit', e=> {
     let search = document.getElementById("search_bar_mobile");
     e.preventDefault();
     currCity = search.value;
-    getWeather();
+    getWeather(`https://api.openweathermap.org/data/2.5/forecast?q=${currCity}&appid=${API_KEY}&units=${units}`);
 });
+
+function getLocation(){
+    navigator.geolocation.getCurrentPosition(GoGetWeather, ErrorCallBack, options);
+}
+function GoGetWeather(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    getWeather(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`);
+}
+function ErrorCallBack(error) {
+    console.error("Error occurred. Error code: " + error.code);
+    // Error codes:
+    // 0: unknown error
+    // 1: permission denied
+    // 2: position unavailable
+    // 3: timeout
+}
+const options = {
+    enableHighAccuracy: true, // Request the most accurate position possible
+    timeout: 5000, // Set a timeout (in milliseconds) for the request
+    maximumAge: 0 // Do not cache the position (0 = always request a fresh position)
+};
 
 function SmSearchPopUp(){
     // Resetting All
@@ -101,14 +123,14 @@ function ChangeC() {
     FButton.classList.remove("ring");
     CButton.classList.add("ring");
     units = 'metric';
-    getWeather();
+    getWeather(`https://api.openweathermap.org/data/2.5/forecast?q=${currCity}&appid=${API_KEY}&units=${units}`);
 }
 
 function ChangeF() {
     FButton.classList.add("ring");
     CButton.classList.remove("ring");
     units = 'imperial';
-    getWeather();
+    getWeather(`https://api.openweathermap.org/data/2.5/forecast?q=${currCity}&appid=${API_KEY}&units=${units}`);
 }
 
 // Convert country code to name
@@ -141,8 +163,8 @@ function formatTime(timestamp) {
     };
     return date.toLocaleTimeString('en-US', options);
 }
-function getWeather() {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${currCity}&appid=${API_KEY}&units=${units}`)
+function getWeather(URL) {
+    fetch(URL)
         .then(response => response.json())
         .then(data => {
             // Handle current weather data
@@ -225,5 +247,5 @@ function getAirQuality(lat, lon) {
         });
 }
 
-document.body.addEventListener('load', getWeather());
+document.body.addEventListener('load', getWeather(`https://api.openweathermap.org/data/2.5/forecast?q=${currCity}&appid=${API_KEY}&units=${units}`));
 
