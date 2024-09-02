@@ -133,13 +133,13 @@ function getWeather() {
 
             // Filter out data for each day
             const forecastDays = data.list.filter(entry => entry.dt_txt.endsWith('12:00:00'));
-            forecastContainer.innerHTML = '<h1 class="text-3xl">5 Days Forecast</h1>';
+            forecastContainer.innerHTML = '<h1 class="text-3xl mb-3 md:mb-0">5 Days Forecast</h1>';
             forecastDays.forEach(forecast => {
                 const weatherCode = forecast.weather[0].id;
                 const weatherIconObj = weatherIcons.find(icon => icon.code === weatherCode);
 
                 forecastContainer.innerHTML += `
-                    <div class="flex justify-around">
+                    <div class="flex justify-around mb-4 md:mb-0">
                         <div class="w-1/3">
                             ${weatherIconObj.icon}
                             <p class="inline-block">${Math.round(forecast.main.temp)}&#176;</p>
