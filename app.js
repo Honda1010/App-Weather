@@ -93,7 +93,7 @@ function ErrorCallBack(error) {
 }
 const options = {
     enableHighAccuracy: true, // Request the most accurate position possible
-    timeout: 5000, // Set a timeout (in milliseconds) for the request
+    timeout: 500, // Set a timeout (in milliseconds) for the request
     maximumAge: 0 // Do not cache the position (0 = always request a fresh position)
 };
 
