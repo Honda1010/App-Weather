@@ -167,6 +167,8 @@ function getWeather(URL) {
     fetch(URL)
         .then(response => response.json())
         .then(data => {
+            //Updating the city name in case the first API call is done by longtitude and latitude
+            currCity = data.city.name;
             // Handle current weather data
             city.innerHTML = `${data.city.name}, ${ConvertCountryCode(data.city.country)}`;
             dateTime.innerHTML = ConvertTimeStamp(data.list[0].dt, data.city.timezone);
