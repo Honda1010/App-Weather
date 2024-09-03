@@ -251,3 +251,19 @@ function getAirQuality(lat, lon) {
 
 document.body.addEventListener('load', getWeather(`https://api.openweathermap.org/data/2.5/forecast?q=${currCity}&appid=${API_KEY}&units=${units}`));
 
+// Handle darkmode button
+const toggleButton = document.getElementById('dark-mode-toggle');
+const sunIcon = document.getElementById('sun-icon');
+const moonIcon = document.getElementById('moon-icon');
+
+toggleButton.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  
+  if (document.documentElement.classList.contains('dark')) {
+    sunIcon.classList.add('hidden');
+    moonIcon.classList.remove('hidden');
+  } else {
+    sunIcon.classList.remove('hidden');
+    moonIcon.classList.add('hidden');
+  }
+});
