@@ -81,7 +81,7 @@ function getLocation(){
 function GoGetWeather(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    getWeather(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`);
+    getWeather(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=${units}`);
 }
 function ErrorCallBack(error) {
     console.error("Error occurred. Error code: " + error.code);
