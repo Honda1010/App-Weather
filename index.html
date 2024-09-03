@@ -35,54 +35,64 @@
     <title>WeatherApp</title>
 </head>
 
-<body class="container font-Jost bg-black ">
+<body class="container font-Jost bg-beige  dark:bg-black ">
     <header class="flex justify-between items-center p-4">
         <!-- Logo -->
-        <div class="flex" id="logo">
-            <i class="fa-solid fa-cloud text-3xl text-white"></i>
-            <span class="text-3xl font-semibold text-white ml-1">WeatherApp</span>
+        <div class="flex text-LightFontColor dark:text-white" id="logo">
+            <i class="fa-solid fa-cloud text-2xl md:text-3xl "></i>
+            <span class="text-2xl md:text-3xl font-semibold ml-1">WeatherApp</span>
         </div>
         <!-- Search Bar -->
-        <form class="relative w-full md:w-96 hidden md:block " id="search_form_desktop"
+        <form class="relative w-full md:w-96 hidden md:block " id="search_form_desktop">
             <div class="hidden md:block">
                 <input type="text" placeholder="Search City..."
-                    class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg"
+                    class=" bg-white30 rounded-full bg-LightFontColor dark:text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg dark:bg-slate-900"
                     id="search_bar_desktop">
-                <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                <i class="fas fa-search  absolute left-3 top-1/2 transform -translate-y-1/2 dark:text-white"></i>
             </div>
         </form>
 
         <!-- Icons -->
         <div class="flex justify-end space-x-3" id="icons">
             <button
-                class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:hidden " onclick="SmSearchPopUp()">
+                class="bg-white30 h-12 w-12 text-LightFontColor grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS md:hidden dark:bg-slate-900 dark:text-white"
+                onclick="SmSearchPopUp()">
                 <i class="fa-solid fa-magnifying-glass"></i></button>
             <button
-                class="text-white h-12 bg-violet-500 place-items-center rounded-full flex p-4 group focus:outline-none duration-300 hover:bg-violet-800" onclick="getLocation()">
-                <i class="fa-solid fa-location-crosshairs md:mr-1 group-hover:mr-1"></i>
-                <p class="hidden md:block text-sm transition-all duration-1000 group-hover:block">Get Location</p>
+                class="text-white h-12 bg-blue-500 place-items-center rounded-full flex p-4 focus:outline-none duration-300 hover:bg-blue-800 dark:hover:bg-violet-800 dark:bg-violet-500"
+                onclick="getLocation()">
+                <i class="fa-solid fa-location-crosshairs md:mr-1"></i>
+                <p class="hidden md:block text-sm transition-all duration-1000 ">Get Location</p>
+            </button>
+            <button id="dark-mode-toggle"
+                class="p-4 h-12 rounded-full flex items-center justify-center bg-white30 dark:bg-white30-700 text-gray-800 dark:bg-slate-900">
+                <i class="fas fa-sun text-black" id="sun-icon"></i>
+                <i class="fas fa-moon text-white hidden" id="moon-icon"></i>
             </button>
         </div>
         <!-- search after you click on button -->
         <div class="flex justify-around items-center w-full hidden" id="sm_search_container">
             <button
-                class="text-white h-10 w-10 bg-slate-900 grid place-items-center rounded-full p-3  mr-2 md:hidden transition-shadow duration-300 hover:shadow-Sec-BS" onclick="SmSearchPopDown()">
+                class=" text-LightFontColor bg-white30 h-10 w-10  grid place-items-center rounded-full p-3  mr-2 md:hidden transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS dark:bg-slate-900 dark:text-white"
+                onclick="SmSearchPopDown()">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
             <form class="relative w-full" id="search_form_mobile">
                 <div>
                     <input type="text" placeholder="Search City..."
-                        class="bg-slate-900 rounded-full text-white outline-none pl-10 w-full h-10 md:h-12 md:text-lg"
+                        class="text-LightFontColor bg-white30 rounded-full  outline-none pl-10 w-full h-10 md:h-12 md:text-lg dark:text-white dark:bg-slate-900"
                         id="search_bar_mobile">
-                    <i class="fas fa-search text-white absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                    <i
+                        class="text-LightFontColor fas fa-search  absolute left-3 top-1/2 transform -translate-y-1/2 dark:text-white"></i>
                 </div>
             </form>
         </div>
     </header>
-    <main class=" mt-12 text-white mx-4">
+    <main class=" mt-12 text-LightFontColor dark:text-white mx-4">
         <!-- Location & Main Info Section -->
         <section class="my-8 text-center grid grid-cols-1 gap-y-14 md:grid-cols-2 md:gap-x-14">
-            <div class="rounded-xl bg-slate-950 py-6 transition-shadow duration-300 hover:shadow-Sec-BS">
+            <div
+                class="rounded-xl bg-white30 py-6 transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS dark:bg-slate-950 ">
                 <!-- City -->
                 <h1 class=" text-3xl" id="city"></h1>
                 <!-- DateTime -->
@@ -90,14 +100,14 @@
                 <!-- C & F Buttons -->
                 <div class="flex justify-center space-x-3 mb-6 ">
                     <button
-                        class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block ring-yellow-50" id="c_button"
-                        onclick="ChangeC()">&#176C</button>
+                        class="h-12 w-12 text-LightFontColor bg-white30  dark:bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS md:block ring-LightFontColor dark:ring-yellow-50 dark:text-white "
+                        id="c_button" onclick="ChangeC()">&#176C</button>
                     <button
-                        class="text-white h-12 w-12 bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-Sec-BS md:block ring-yellow-50" id="f_button"
-                        onclick="ChangeF()">&#176F</button>
+                        class=" h-12 w-12 text-LightFontColor  bg-white30 dark:bg-slate-900 grid place-items-center rounded-full transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS md:block ring-LightFontColor dark:ring-yellow-50 dark:text-white"
+                        id="f_button" onclick="ChangeF()">&#176F</button>
                 </div>
                 <!-- Weather Forcast -->
-                <p class="bg-slate-900 rounded-full inline-block py-2 px-6" id="weather_forcast"></p>
+                <p class="bg-white30  dark:bg-slate-900 rounded-full inline-block py-2 px-6" id="weather_forcast"></p>
                 <!-- Weather Icon -->
                 <div class="text-5xl my-4" id="weather_icon"></div>
                 <!-- Current Feels_like Temperature -->
@@ -109,75 +119,80 @@
                 </div>
             </div>
             <!-- 5 Days Forecast -->
-            <div class="rounded-xl bg-slate-950 py-6 flex flex-col justify-around transition-shadow duration-300 hover:shadow-Sec-BS"
+            <div class="rounded-xl bg-white30 dark:bg-slate-950 py-6 flex flex-col justify-around transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS"
                 id="forecast_container"> </div>
         </section>
 
         <!-- Weather Info -->
-        <section class="bg-slate-950  p-4 rounded-xl">
+        <section class="bg-white30 dark:bg-slate-950  p-4 rounded-xl">
             <h2 class="my-2">Todays Highlights</h2>
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <!-- Air Quality Index  -->
                 <div
-                    class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
+                    class="flex flex-col bg-white30 dark:bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS">
                     <div class="flex justify-between text-sm my-2">
-                        <p class="text-neutral-500">Air Quality Index</p>
+                        <p class="text-LightFontColor dark:text-neutral-500 ">Air Quality Index</p>
                         <p class="bg-orange-300 rounded-full px-2 text-black" id="air_quality"></p>
                     </div>
                     <div class="flex items-center justify-between my-4">
                         <i class="fa-solid fa-wind mr-4 text-2xl"></i>
                         <div class="text-center">
-                            <p class="text-neutral-500 text-xs">PM25</p>
+                            <p class="text-LightFontColor dark:text-neutral-500 text-xs">PM25</p>
                             <p class="text-2xl" id="PM25"></p>
                         </div>
                         <div class="text-center">
-                            <p class="text-neutral-500 text-sm">SO<span class="text-xs">2</span></p>
+                            <p class="text-LightFontColor dark:text-neutral-500 text-sm">SO<span
+                                    class="text-xs">2</span></p>
                             <p class="text-2xl" id="SO2"></p>
                         </div>
                         <div class="text-center">
-                            <p class="text-neutral-500 text-sm">NO<span class="text-xs">2</span></p>
+                            <p class="text-LightFontColor dark:text-neutral-500 text-sm">NO<span
+                                    class="text-xs">2</span></p>
                             <p class="text-2xl" id="NO2"></p>
                         </div>
                         <div class="text-center">
-                            <p class="text-neutral-500 text-sm">O<span class="text-xs">3</span></p>
+                            <p class="text-LightFontColor dark:text-neutral-500 text-sm">O<span class="text-xs">3</span>
+                            </p>
                             <p class="text-2xl" id="O3"></p>
                         </div>
                     </div>
                 </div>
                 <!-- Sunrise & Sunset -->
                 <div
-                    class="flex flex-col bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                    <p class="text-neutral-500 text-sm mt-2 mb-2 md:mb-6">Sunrise & Sunset</p>
+                    class="flex flex-col bg-white30 dark:bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS">
+                    <p class="text-LightFontColor dark:text-neutral-500 text-sm mt-2 mb-2 md:mb-6">Sunrise & Sunset</p>
                     <div class="grid grid-cols-2">
                         <!-- Sunrise -->
                         <div class="flex items-center">
                             <i class="fa-regular fa-sun text-2xl mr-6"></i>
                             <div>
-                                <p class="text-neutral-500 text-sm">Sunrise</p>
-                                <p class="text-2xl" id="sunrise"></p>
+                                <p class="text-LightFontColor dark:text-neutral-500 text-sm">Sunrise</p>
+                                <p class="text-lg md:text-2xl" id="sunrise"></p>
                             </div>
                         </div>
                         <!-- Sunset -->
                         <div class="flex items-center">
                             <i class="fa-regular fa-moon text-2xl mx-6"></i>
                             <div>
-                                <p class="text-neutral-500 text-sm">Sunset</p>
-                                <p class="text-2xl" id="sunset"></p>
+                                <p class="text-LightFontColor dark:text-neutral-500 text-sm">Sunset</p>
+                                <p class="text-lg' md:text-2xl" id="sunset"></p>
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="grid grid-cols-2 gap-x-4">
-                    <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                        <p class="text-neutral-500 text-sm  mb-3">Humidity</p>
+                    <div
+                        class="bg-white30 dark:bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS">
+                        <p class="text-LightFontColor dark:text-neutral-500 text-sm  mb-3">Humidity</p>
                         <div class="flex text-2xl items-center ">
                             <i class="fa-solid fa-droplet mr-6 mb-1"></i>
                             <p id="humidity"></p>
                         </div>
                     </div>
-                    <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                        <p class="text-neutral-500 text-sm mb-3">Pressure</p>
+                    <div
+                        class="bg-white30 dark:bg-slate-900  p-4 rounded-xl transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS">
+                        <p class="text-LightFontColor dark:text-neutral-500 text-sm mb-3">Pressure</p>
                         <div class="flex text-2xl items-center ">
                             <i class="fa-solid fa-gauge-high mr-2 md:mr-6"></i>
                             <p id="pressure"></p>
@@ -185,15 +200,17 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-x-4">
-                    <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                        <p class="text-neutral-500 text-sm mb-3">Visibility</p>
+                    <div
+                        class="bg-white30 dark:bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS">
+                        <p class="text-LightFontColor dark:text-neutral-500 text-sm mb-3">Visibility</p>
                         <div class="flex text-2xl items-center ">
                             <i class="fa-regular fa-eye mr-6"></i>
                             <p id="visibility"></p>
                         </div>
                     </div>
-                    <div class="bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-Sec-BS">
-                        <p class="text-neutral-500 text-sm mb-3">Temperature</p>
+                    <div
+                        class="bg-white30 dark:bg-slate-900 p-4 rounded-xl transition-shadow duration-300 hover:shadow-main-BS dark:hover:shadow-Sec-BS">
+                        <p class="text-LightFontColor dark:text-neutral-500 text-sm mb-3">Temperature</p>
                         <div class="flex text-2xl items-center ">
                             <i class="fa-solid fa-temperature-full mr-6"></i>
                             <p id="Weather_temperature"></p>
@@ -203,7 +220,9 @@
             </div>
         </section>
     </main>
-    <footer class=" text-white h-10 grid place-items-center mt-10 rounded-md mx-4 text-sm md:text-base">&copy; 2024 NTI
+    <footer
+        class=" text-LightFontColor dark:text-white h-10 grid place-items-center mt-10 rounded-md mx-4 text-sm md:text-base">
+        &copy; 2024 NTI
         Web Design
         Final
         Project.

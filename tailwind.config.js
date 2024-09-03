@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./*.{html,js}"],
+  darkMode: 'class',
   theme: {
     extend: {
       container: {
@@ -15,9 +16,9 @@ module.exports = {
         GrayishColor: '#80888B',
         Surface: '#1D1C1F',
         BlackAlpha: 'hsla(0, 0%, 0%, 0.1);',
-
-
-
+        beige : 'hsla(36, 31%, 90%, 1);',
+        white30: 'hsla(0, 0%, 100%, 0.3);',
+        LightFontColor:'hsla(158, 23%, 18%, 1);'
       },
       borderRadius: {
         'main-BR': '50px',      
