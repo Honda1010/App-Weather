@@ -246,6 +246,11 @@ function getAirQuality(lat, lon) {
         })
         .catch(error => {
             console.error('Error fetching air quality data:', error);
+            airQuality.innerHTML = 'N/A';
+            PM25.innerHTML = 'N/A';
+            SO2.innerHTML = 'N/A';
+            NO2.innerHTML = 'N/A';
+            O3.innerHTML = 'N/A';
         });
 }
 

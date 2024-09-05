@@ -803,6 +803,10 @@ video {
   border-radius: 0.75rem;
 }
 
+.bg-LightFontColor {
+  background-color: hsla(158, 23%, 18%, 1);;
+}
+
 .bg-beige {
   background-color: hsla(36, 31%, 90%, 1);;
 }
@@ -817,17 +821,8 @@ video {
   background-color: rgb(253 186 116 / var(--tw-bg-opacity));
 }
 
-.bg-slate-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
-}
-
 .bg-white30 {
   background-color: hsla(0, 0%, 100%, 0.3);;
-}
-
-.bg-LightFontColor {
-  background-color: hsla(158, 23%, 18%, 1);;
 }
 
 .p-3 {
@@ -900,13 +895,12 @@ video {
   line-height: 1rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .font-semibold {
   font-weight: 600;
+}
+
+.text-LightFontColor {
+  color: hsla(158, 23%, 18%, 1);;
 }
 
 .text-black {
@@ -914,28 +908,14 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.text-blue-500 {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
-.text-neutral-500 {
-  --tw-text-opacity: 1;
-  color: rgb(115 115 115 / var(--tw-text-opacity));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-LightFontColor {
-  color: hsla(158, 23%, 18%, 1);;
 }
 
 .outline-none {
@@ -947,11 +927,6 @@ video {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-
-.ring-yellow-50 {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(254 252 232 / var(--tw-ring-opacity));
 }
 
 .ring-LightFontColor {
@@ -987,12 +962,6 @@ video {
   background-color: rgb(30 64 175 / var(--tw-bg-opacity));
 }
 
-.hover\:shadow-Sec-BS:hover {
-  --tw-shadow: 10px 10px 34px -6px rgba(201,201,201,0.67);;
-  --tw-shadow-colored: 10px 10px 34px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .hover\:shadow-main-BS:hover {
   --tw-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;;
   --tw-shadow-colored: 0px 50px 100px -20px var(--tw-shadow-color), 0px 30px 60px -30px; var(--tw-shadow-color);
@@ -1002,14 +971,6 @@ video {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
-}
-
-.group:hover .group-hover\:mr-1 {
-  margin-right: 0.25rem;
-}
-
-.group:hover .group-hover\:block {
-  display: block;
 }
 
 .dark\:bg-black:is(.dark *) {
@@ -1030,11 +991,6 @@ video {
 .dark\:bg-violet-500:is(.dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(139 92 246 / var(--tw-bg-opacity));
-}
-
-.dark\:text-gray-200:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
 .dark\:text-neutral-500:is(.dark *) {
@@ -1060,12 +1016,6 @@ video {
 .dark\:hover\:shadow-Sec-BS:hover:is(.dark *) {
   --tw-shadow: 10px 10px 34px -6px rgba(201,201,201,0.67);;
   --tw-shadow-colored: 10px 10px 34px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.dark\:hover\:shadow-main-BS:hover:is(.dark *) {
-  --tw-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;;
-  --tw-shadow-colored: 0px 50px 100px -20px var(--tw-shadow-color), 0px 30px 60px -30px; var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1111,6 +1061,11 @@ video {
          column-gap: 3.5rem;
   }
 
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -1124,11 +1079,6 @@ video {
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 }
 
